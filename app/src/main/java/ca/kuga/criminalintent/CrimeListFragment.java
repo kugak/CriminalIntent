@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 /**
  * Controller Crime List Fragment
  */
@@ -16,6 +18,7 @@ public class CrimeListFragment extends Fragment {
 
     //set up view for recycler view
     private RecyclerView mCrimeRecyclerView;
+    private CrimeAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -27,14 +30,48 @@ public class CrimeListFragment extends Fragment {
         mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id.crime_recycler_view);
         //positions each item and defines scrolling
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        updateUI();
+        
         return view;
+    }
+
+    private void updateUI() {
+        CrimeLab crimeLab = CrimeLab.get(getActivity());
+        List<Crime> crimes = crimeLab.getCrime();
+
+        mAdapter = new CrimeAdapter(crimes);
+        mCrimeRecyclerView.setAdapter(mAdapter);
     }
 
     //define ViewHolder to inflate and own layout
     public class CrimeHolder extends RecyclerView.ViewHolder {
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
             super (inflater.inflate(R.layout.list_item_crime, parent, false));
+        }
+    }
+    
+    //adapter
+    private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
+        private List<Crime> mCrimes;
+        
+        public CrimeAdapter(List<Crime> crimes) {
+            mCrimes = crimes;
+        }
+
+        @Override
+        public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new CrimeHolder(layoutInflater, parent);
+        }
+
+        @Override
+        public void onBindViewHolder(CrimeHolder holder, int position) {
+            //intentional blank
+        }
+
+        @Override
+        public int getItemCount() {
+            return mCrimes.size();
         }
     }
 
