@@ -31,4 +31,11 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
+    //define ViewHolder to inflate and own layout
+    public class CrimeHolder extends RecyclerView.ViewHolder {
+        public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
+            super (inflater.inflate(R.layout.list_item_crime, parent, false));
+        }
+    }
+
 }
