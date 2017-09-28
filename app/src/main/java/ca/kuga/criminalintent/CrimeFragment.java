@@ -21,6 +21,7 @@ public class CrimeFragment extends Fragment {
 
     private Crime mCrime;
     private EditText mTitleField;
+    private Button mDateButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,11 +54,14 @@ public class CrimeFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // intentional blank
-
             }
+
         });// end of addTextChangedListener
 
-
+        //adding button Listener
+        mDateButton = (Button) v.findViewById(R.id.crime_date);
+        mDateButton.setText(mCrime.getMdate().toString());
+        mDateButton.setEnabled(false);
 
         return v;
 
