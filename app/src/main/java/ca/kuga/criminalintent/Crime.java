@@ -12,13 +12,13 @@ public class Crime {
     //crimeID, title, date, status
     private UUID mID; //universally unique ID
     private String mTitle;
-    private Date mdate;
+    private Date mDate;
     private boolean mSolved;
 
     //constructor to initialize ID & date
     public Crime() {
         mID = UUID.randomUUID();
-        mdate = new Date();
+        mDate = new Date();
     }
 
     //getter for mID
@@ -34,12 +34,12 @@ public class Crime {
         this.mTitle = mTitle;
     }
 
-    public Date getMdate() {
-        return mdate;
+    public Date getmDate() {
+        return mDate;
     }
 
-    public void setMdate(Date mdate) {
-        this.mdate = mdate;
+    public void setmDate(Date mDate) {
+        this.mDate = mDate;
     }
 
     public boolean ismSolved() {
@@ -49,4 +49,5 @@ public class Crime {
     public void setmSolved(boolean mSolved) {
         this.mSolved = mSolved;
     }
+
 }

@@ -64,7 +64,7 @@ public class CrimeFragment extends Fragment {
 
         //adding button Listener
         mDateButton = (Button) v.findViewById(R.id.crime_date);
-        mDateButton.setText(mCrime.getMdate().toString());
+        mDateButton.setText(mCrime.getmDate().toString());
         mDateButton.setEnabled(false);
 
         //adding checkbox Listener
