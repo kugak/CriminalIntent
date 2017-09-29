@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class CrimeListFragment extends Fragment {
     //set up view for recycler view
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -45,8 +47,23 @@ public class CrimeListFragment extends Fragment {
 
     //define ViewHolder to inflate and own layout
     public class CrimeHolder extends RecyclerView.ViewHolder {
+
+        private TextView mTitleTextView;
+        private TextView mDateTextView;
+        private Crime mCrime;
+
+        //bind
+        public void bind (Crime crime) {
+            mCrime = crime;
+            mTitleTextView.setText(mCrime.getmTitle());
+            mDateTextView.setText(mCrime.getmDate().toString());
+        }
+
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
             super (inflater.inflate(R.layout.list_item_crime, parent, false));
+
+            mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
+            mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
         }
     }
     
