@@ -37,6 +37,10 @@ public class CrimeLab {
         }
     }
 
+    public List<Crime> getCrimes() {
+        return mCrimes;
+    }
+
     //returns the crime with given ID
     public Crime getCrime(UUID id) {
         for (Crime crime : mCrimes) {
