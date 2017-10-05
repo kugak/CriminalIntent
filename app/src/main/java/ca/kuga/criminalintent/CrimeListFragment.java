@@ -1,5 +1,6 @@
 package ca.kuga.criminalintent;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -79,9 +80,8 @@ public class CrimeListFragment extends Fragment {
         //on click toast message
         @Override
         public void onClick(View view) {
-            Toast.makeText(getActivity(),
-                    mCrime.getmTitle() + " clicked!", Toast.LENGTH_SHORT)
-                    .show();
+            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+            startActivity(intent);
         }
     }
 
