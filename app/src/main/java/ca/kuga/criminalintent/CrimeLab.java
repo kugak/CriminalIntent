@@ -31,8 +31,9 @@ public class CrimeLab {
         //generating crime list
         for (int i = 0; i < 100; i++) {
             Crime crime = new Crime();
-            crime.setmTitle("Crime #" + i);
+            crime.setmTitle("Crime # " + i);
             crime.setmSolved(i % 2 == 0); //Every other one
+            crime.setmRequiresPolice(i % 2 == 0);//require police
             mCrimes.add(crime);
         }
     }
