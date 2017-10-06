@@ -104,7 +104,9 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onClick(View view) {
             //use new intent to pass the crime data
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getmID());
+
+            Intent intent = CrimePageActivity.newIntent(getActivity(), mCrime.getmID());
+
             startActivity(intent);
         }
     }
