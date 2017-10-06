@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public class CrimeActivity extends SingleFragmentActivity {
 
-    public static final String EXTRA_CRIME_ID =
-            "ca.kuga.criminalintent.crime_id";
+    //no other classes with need it
+    private static final String EXTRA_CRIME_ID = "ca.kuga.criminalintent.crime_id";
 
     //new Intent method
     public static Intent newIntent(Context packageContext, UUID crimeId) {
