@@ -77,10 +77,11 @@ public class CrimeListFragment extends Fragment {
             //mSolvedImageView.setVisibility(mCrime.ismSolved() ? View.VISIBLE : View.GONE);
         }
 
-        //on click toast message
+        //link to open CrimeFragment
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+            //use new intent to pass the crime data
+            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getmID());
             startActivity(intent);
         }
     }
