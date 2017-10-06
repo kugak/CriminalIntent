@@ -106,7 +106,4 @@ public class CrimeFragment extends Fragment {
 
     }
 
-    public void returnResult() {
-        getActivity().setResult(Activity.RESULT_OK, null);
-    }
 }
