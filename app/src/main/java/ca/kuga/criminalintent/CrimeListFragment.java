@@ -1,7 +1,6 @@
 package ca.kuga.criminalintent;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +22,11 @@ import java.util.List;
 
 public class CrimeListFragment extends Fragment {
 
+    //challenge
+    //save clicked crime Position
+    private int viewedCrimePosition;
+    private static final String VIEWED_CRIME_POSITION_ID = "viewed_crime_position_id";
+
     //set up view for recycler view
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
@@ -39,7 +43,12 @@ public class CrimeListFragment extends Fragment {
         //positions each item and defines scrolling
         mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        updateUI();
+        //updateUI();
+        //challenge
+        //if crime is clicked save the position
+        if (savedInstanceState != null) {
+            viewedCrimePosition = savedInstanceState.getInt(VIEWED_CRIME_POSITION_ID);
+        }
 
         return view;
     }
@@ -56,10 +65,11 @@ public class CrimeListFragment extends Fragment {
         List<Crime> crimes = crimeLab.getCrimes();
 
         if (mAdapter == null) {
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+            mAdapter = new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.notifyDataSetChanged();
+            //save crime position
+            mAdapter.notifyItemChanged(viewedCrimePosition);
         }
     }
 
@@ -86,6 +96,8 @@ public class CrimeListFragment extends Fragment {
             mDateTextView.setText(DateFormat.format("EEEE, MMM dd, yyyy", mCrime.getmDate()));
 
             //mSolvedImageView.setVisibility(mCrime.ismSolved() ? View.VISIBLE : View.GONE);
+
+
         }
 
         //link to open CrimeFragment
@@ -162,6 +174,12 @@ public class CrimeListFragment extends Fragment {
             }
             return 0;
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle onSavedInstanceState) {
+        super.onSaveInstanceState(onSavedInstanceState);
+        onSavedInstanceState.putSerializable(VIEWED_CRIME_POSITION_ID, viewedCrimePosition);
     }
 
 }
