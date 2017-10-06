@@ -45,6 +45,9 @@ public class CrimeFragment extends Fragment {
 
         //referencing to EditText
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
+        //populate with crime title
+        mTitleField.setText(mCrime.getmTitle());
+
 
         //adding EditText Listener
         mTitleField.addTextChangedListener(new TextWatcher()
@@ -74,6 +77,9 @@ public class CrimeFragment extends Fragment {
 
         //adding checkbox Listener
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
+        //update checkbox with data
+        mSolvedCheckBox.setChecked(mCrime.ismSolved());
+
         mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
