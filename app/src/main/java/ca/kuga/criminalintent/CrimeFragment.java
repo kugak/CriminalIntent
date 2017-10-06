@@ -14,6 +14,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
+import java.util.UUID;
+
 /**
  * Fragment Controller
  * Present the details of a specific crime and
@@ -30,7 +32,10 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCrime = new Crime();
+        //retreiving the extra and fetching the crime
+        UUID crimeId = (UUID) getActivity().getIntent()
+                .getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
+        mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
